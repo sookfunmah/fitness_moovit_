@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 
+//youtube video feature
 const ExerciseVideos = ({ exerciseVideos, name }) => {
 
   console.log("exerciseVideos:", exerciseVideos)
@@ -24,6 +25,7 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
           gap: { lg: "110px", xs: "0" },
         }}
       >
+{/* Display youtube videos */}
         {exerciseVideos?.slice(0,3).map((item,index) => (
           <a 
           key = {index}
@@ -36,7 +38,7 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
           </a> 
 
         ))}
-      </Stack>
+      </Stack> 
     </Box>
   );
 };
