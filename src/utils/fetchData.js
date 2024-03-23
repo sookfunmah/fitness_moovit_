@@ -3,8 +3,7 @@ export const exerciseOptions = {
     params: {limit: '25'},
     headers: {
       'X-RapidAPI-Host':'exercisedb.p.rapidapi.com',
-      'X-RapidAPI-Key':process.env.REACT_APP_API_KEY 
-      
+      'X-RapidAPI-Key':process.env.REACT_APP_API_KEY   
     }
   };
 

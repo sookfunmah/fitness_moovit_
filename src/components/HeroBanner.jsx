@@ -6,11 +6,11 @@ import { blue } from "@mui/material/colors";
 const HeroBanner = () => {
   return (
     <Box
-      sx={{ mt: { lg: "212px", xs: "70px" }, ml: { sm: "50px" } }}
+      sx={{ mt: { lg: "80px", xs: "60px" }, ml: { sm: "40px" } }}
       position="relative"
-      p="20px"
+      p="10px"
     >
-      <Typography color="#FF2323" fontWeight="600" fontSize="26px">
+      <Typography color="#FF2323" fontWeight="800" fontSize="26px">
         Fitness CLub
       </Typography>
       <Typography
@@ -25,7 +25,6 @@ const HeroBanner = () => {
       <Button variant="contained" href="#exercises" color="error">
         Explore Exercise
       </Button>
-      
       <img src={HeroBannerImage} alt="banner"  />
     </Box>
   );

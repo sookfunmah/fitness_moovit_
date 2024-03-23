@@ -13,12 +13,11 @@ const Navbar = () => {
         <img src={Logo} alt = "logo" style = {{width:'48px',height:'48',margin:'0 20px'}} />
       </Link>
       <Stack
-        directin = "row"
-        gap ="40px"
+        direction = "row"
+        gap ="30px"
         fontSize = "24px"
-        alignItems="flex-end"
-        >
-
+        alignItems="center"
+      >
         <Link to= "/" style= {{textDecoration: 'none', color:'#3A1213', borderBottom: '3px solid #FF2323'}}> Home</Link>
         <a href = "#exercises" style = {{textDecoration: "none", color: "#3A1213"}}> Exercises</a>
       </Stack>
