@@ -7,7 +7,7 @@ import EquipmentImage from '../assets/icons/equipment.png'
 //Display the exercise details from the API under the gif exercise.
 const Detail = ({exerciseDetail}) => {
 
-  //Dislay the 3 icons
+  //Display the 3 icons
   const {bodyPart, gifUrl, name, target, equipment} = exerciseDetail
   const extraDetail = [{
     icon : BodyPartImage,
@@ -22,8 +22,6 @@ const Detail = ({exerciseDetail}) => {
     name : equipment,
   }
 ]
-    
-  
   console.log(gifUrl)
   return (
     <Stack>
