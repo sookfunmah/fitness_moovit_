@@ -1,41 +1,9 @@
-// import React from 'react'
-// import { Box, Typography } from '@mui/material'
-
-// const FavoriteList = (favoriteExercise) => {
-//   return (
-//     <Box>
-//         <Typography variant="h2">
-//             Fav Exercises
-//         </Typography>
-
-//         {favoriteExercise.length > 0 ? (
-//             <ul>
-//                 {favoriteExercise.map(exercise => (
-//                     <li key={exercise.id}>
-//                         <Typography>{exercise.name}</Typography> 
-//                     </li>
-//                 ))}
-//             </ul>
-//         ) : (
-//             <Typography>No Fav exercise added yet</Typography>
-//         )}
-//     </Box>
-//   )
-// }
-
-// export default FavoriteList;
-
-
-
-// FavoriteExercises.jsx
-
 import React, { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
-import postDataToAirtable from "../utils/postDataToAirtable";
+import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
 
-const RecordUrl = 'https://api.airtable.com/v0/appvao7Efftfzq9wm/favlist'
-const bearerToken = 'Bearer patDcFKAE6lSV2xY9.0138e6e7433458bb2de1e7c120b705cb40aef21b318f87d74bcec8dd11a45020'
+const RecordUrl = "https://api.airtable.com/v0/appvao7Efftfzq9wm/favlist";
+const bearerToken =process.env.REACT_APP_BEARER_TOKEN;
 
 const FavoriteExercises = () => {
   const [favoriteExercises, setFavoriteExercises] = useState([]);
@@ -44,14 +12,11 @@ const FavoriteExercises = () => {
     const fetchFavoriteExercises = async () => {
       try {
         // Fetch favorite exercises from Airtable
-        const response = await axios.get(
-          RecordUrl,
-          {
-            headers: {
-              Authorization: bearerToken
-            }
-          }
-        );
+        const response = await axios.get(RecordUrl, {
+          headers: {
+            Authorization: bearerToken,
+          },
+        });
         setFavoriteExercises(response.data.records);
       } catch (error) {
         console.error("Error fetching favorite exercises:", error);
@@ -61,12 +26,53 @@ const FavoriteExercises = () => {
     fetchFavoriteExercises();
   }, []);
 
+  // Function to handle exercise deletion from the favorite list
+  const handleDeleteExercise = async (exerciseId) => {
+    try {
+      await axios.delete(`${RecordUrl}/${exerciseId}`, {
+        headers: {
+          Authorization: bearerToken,
+        },
+      });
+      // Filter out the deleted exercise from the favorite list
+      setFavoriteExercises((prevExercises) =>
+        prevExercises.filter((exercise) => exercise.id !== exerciseId)
+      );
+      console.log(
+        `Exercise with ID ${exerciseId} deleted from the favorite list.`
+      );
+    } catch (error) {
+      console.error(
+        `Error deleting exercise with ID ${exerciseId} from the favorite list:`,
+        error
+      );
+    }
+  };
+
   return (
     <Box>
       <Typography variant="h5">Favorite Exercises</Typography>
       <ul>
         {favoriteExercises.map((exercise) => (
-          <li key={exercise.id}>{exercise.fields.name}</li>
+          <li key={exercise.id}>
+            <ul>
+              <img
+                src={exercise.fields.gifUrl}
+                alt={exercise.fields.name}
+                style={{ width: "100px", height: "auto" }}
+              ></img>
+              <br />
+              Name : {exercise.fields.name}
+              <br />
+              Target : {exercise.fields.bodyPart}
+              <Button
+                onClick={() => handleDeleteExercise(exercise.id)}
+                style={{ color: "red" }}
+              >
+                X
+              </Button>
+            </ul>
+          </li>
         ))}
       </ul>
     </Box>
@@ -74,6 +80,3 @@ const FavoriteExercises = () => {
 };
 
 export default FavoriteExercises;
-
-
-

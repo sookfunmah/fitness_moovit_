@@ -12,7 +12,10 @@ const postDataToAirtable = async (exerciseData) => {
         fields: {
             name: exerciseData.name,
             id:exerciseData.id,
-            bodyPart : exerciseData.bodyPart
+            bodyPart : exerciseData.bodyPart,
+            gifUrl : exerciseData.gifUrl,
+            equipment:exerciseData.equipment,
+            
             
         }
          // Pass the data to be added to Airtable

@@ -11,33 +11,6 @@ const Home = () => {
   const[bodyPart,setBodyPart]= useState("all")
   const [exercises,setExercises] = useState([])
 
-  //Fav List
-  const [favoriteExercise,setFavoriteExercise]= useState([])
-
-  const addToFavorite = async (exercise) => {
-    setFavoriteExercise((prevFavorites) => [...prevFavorites, exercise]);
-      try {
-        const response = await axios.post(
-          'https://api.airtable.com/v0/appvao7Efftfzq9wm/favlist',
-          {
-            fields:{
-              name: exercise.name,
-              id : exercise.id,
-              bodyPart:exercise.bodyPart
-            }
-          },
-          {
-            headers:{
-              Authorization : `pathKNiUaXzngxcXG.788506da455b528aed91a89ecd8e1345728b4ee0ee0ef9e22f1a6b267c3dfe7b`
-            }
-          }
-        )
-        console.log( ' fav exercise added',response.data)
-      } catch(error){
-        console.error('error adding fav',error)
-      }
-  }
-  
   
   return (
     <Box>
@@ -51,11 +24,8 @@ const Home = () => {
       exercises={exercises}
       setExercises={setExercises}
       bodyPart={bodyPart}
-      addToFavorite={addToFavorite}
+      
        />
-
-       {/*Display Fav list */}
-       {/* <FavoriteExercises favoriteExercise = {favoriteExercise}/> */}
     </Box>
   )
 }
