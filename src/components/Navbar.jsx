@@ -11,7 +11,7 @@ const Navbar = () => {
       sx = {{ gap: {sm : '50px', xs:'40px'},mt:{sm:'30px',xs:'20px'},justifyContent:'none'}}>
       
       <Link to = "/">
-        <img src={Logo} alt = "logo" style = {{width:'150px',height:'150',margin:'0 0 0 18px'}} />
+        <img src={Logo} alt = "logo" style = {{width:'201px',height:'201',margin:'0 0 0 18px'}} />
       </Link>
 
       <Stack
@@ -23,7 +23,7 @@ const Navbar = () => {
 
       <Link to= "/" style= {{textDecoration: 'none', color:'#3A1213', borderBottom: '3px solid #FF2323', margin:'10px 10px'}}> Home </Link>
       <a href= "#exercises" style = {{textDecoration: "none", color: "#3A1213"}}> Exercises</a>
-      <Link to= "/favlist" style= {{textDecoration: 'none', color:'#3A1213', borderBottom: '3px solid #FF2323', margin:'10px 10px'}}> Favorite </Link>
+      <Link to= "/favlist" style= {{textDecoration: 'none', color:'#3A1213', margin:'10px 10px'}}> Favorite </Link>
 
       </Stack>
     </Stack>

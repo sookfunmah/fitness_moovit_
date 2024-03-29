@@ -10,9 +10,15 @@ import Exercises from "./components/Exercises";
 import FavoriteExercises from "./components/FavoriteExercises";
 
 const App = () => (
-  <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
-    <Navbar />
+
+  <Box sx={{backgroundColor:'white', minHeight:'10vh'}}>
+
+
+<Navbar />
     
+  <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto" >
+ 
+
     <Routes>
      
       <Route path="/" element={<Home />} />
@@ -22,6 +28,7 @@ const App = () => (
     </Routes>
     
     
+  </Box>
   </Box>
 );
 

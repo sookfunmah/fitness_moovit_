@@ -11,3 +11,9 @@
     width: calc(33.33% - 20px); /* Adjust width based on the number of cards and spacing */
     margin-bottom: 20px; /* Adjust margin as needed */
   }
+
+
+.detail-image{ 
+  max-width:'10%'
+}
+  

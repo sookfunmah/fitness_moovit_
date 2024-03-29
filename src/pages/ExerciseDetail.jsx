@@ -2,11 +2,11 @@ import React, {useEffect,useState} from 'react'
 import {useLocation, useParams} from 'react-router-dom'
 import{Box,Button} from '@mui/material'
 import axios from 'axios'
+
 import {exerciseOptions,fetchData, youtubeOptions} from '../utils/fetchData'
 import Detail from '../components/Detail'
 import ExerciseVideos from '../components/ExerciseVideos'
 import postDataToAirtable from '../utils/postDataToAirtable'
-import Exercises from '../components/Exercises'
 import FavoriteExercises from '../components/FavoriteExercises'
 
 
@@ -37,9 +37,7 @@ const ExerciseDetail = () => {
 
 // fetch data from airtable and compare if it is a fav
     useEffect(()=>{
-      // const AirtableUrl = 'https://api.airtable.com/v0/appvao7Efftfzq9wm/favlist'
-      // const bearerToken = process.env.REACT_APP_BEARER_TOKEN
-      
+ 
       const checkIfFav = async () =>{
         try {
           const response = await axios.get (AirtableUrl,{
@@ -53,10 +51,8 @@ const ExerciseDetail = () => {
         } catch (error){
           console.error('Error checking if exercise is favorite:', error)
         }
-      }
-     
-        checkIfFav()
-     
+      }  
+        checkIfFav()     
       
     },[ExerciseDetail])
 
@@ -72,10 +68,13 @@ const ExerciseDetail = () => {
 
       const favoriteExercises = response.data.records
       const isDuplicate = favoriteExercises.some((exercise)=>exercise.fields.id ===exerciseDetail.id)
+
       if(isDuplicate){
       alert('Exercise is already in favorites list!');
       return;
       } 
+
+      //Send Favorite data into Airtable
       await postDataToAirtable ({
         name:exerciseDetail.name,
         id:exerciseDetail.id,
@@ -116,12 +115,17 @@ const ExerciseDetail = () => {
   return (
     <Box>
 
-        {/* "Fav" Button */}
-      <Button onClick={handleAddFavorites}>Add To Favorite</Button>
-
       <Detail exerciseDetail={exerciseDetail} />
 
+        {/* "Fav" Button */}
+        <Button variant="contained" color="secondary"
+        sx={{borderRadius: "10%", width: "450px", height: "50px", color: 'white',background:'#38195b',marginLeft : '20px',marginBottom:'100px'}}
+        onClick={handleAddFavorites} >
+          Add To Favorite
+        </Button>
+    
       <ExerciseVideos exerciseVideos={exerciseVideos} name = {exerciseDetail.name}/>
+      
       {location.pathname ==='/favlist'&& <FavoriteExercises />}
       
     </Box>

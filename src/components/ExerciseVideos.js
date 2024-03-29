@@ -9,12 +9,12 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
 
   return (
     <Box>
-      <Typography variant="h3">
-        Watch{" "}
-        <span style={{ color: "#ff0000", textTransform: "capitalize" }}>
-          {name}
+      <Typography variant="h4" fontWeight='bold' style={{marginBottom:'80px'}}>
+        Similar  {" "}
+        <span style={{ color: "Purple", textTransform: "capitalize" }}>
+        {name}
         </span>{" "}
-        exercise videos
+        exercise videos 
       </Typography>
       <Stack
         justifyContent="flex-start"
@@ -26,7 +26,7 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
         }}
       >
 {/* Display youtube videos */}
-        {exerciseVideos?.slice(0,3).map((item,index) => (
+        {exerciseVideos?.slice(0,6).map((item,index) => (
           <a 
           key = {index}
           className = "exercise-video"
@@ -34,7 +34,17 @@ const ExerciseVideos = ({ exerciseVideos, name }) => {
           target = "blank"
           rel = "noreferrer"
           >
-            <img src = {item.video.thumbnails[0].url} alt={item.video.title} />
+            <img src = {item.video.thumbnails[0].url} alt={item.video.title} style={{height:'250px', width:'400px'}}/>
+            <Box sx={{marginBottom:'80px'}}>
+              <Typography sx={{ fontSize: { lg: '14px', xs: '8px' } }} fontWeight={400} color="#000">
+                {item.video.title}
+              </Typography>
+
+              <Typography fontSize="14px" color="#000">
+                {item.video.channelName}
+              </Typography>
+       
+            </Box>
           </a> 
 
         ))}

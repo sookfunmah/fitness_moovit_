@@ -12,7 +12,7 @@ const Home = () => {
   const [exercises,setExercises] = useState([])
   
   return (
-    <Box>
+    <Box sx={{backgroundColor:'cream'}}>
       <HeroBanner />
       <SearchExercises 
       setExercises={setExercises}

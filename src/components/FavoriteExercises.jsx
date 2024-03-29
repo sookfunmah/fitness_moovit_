@@ -50,27 +50,44 @@ const FavoriteExercises = () => {
   };
 
   return (
-    <Box id="favoritelist">
-      <Typography variant="h5">Favorite Exercises</Typography>
-      <ul>
+    <Box id="favlist">
+      <Typography variant="h4" sx={{margin:'20px' ,color : '#392A48'}}>Favorite Exercises</Typography>
+      <ul style={{marginLeft:'100px',marginBottom:'100px',display:'grid', gridTemplateColumns: "repeat(2, 1fr)", listStyleType: "none", gap:'100px',justifyContent:"center"}}>
         {favoriteExercises.map((exercise) => (
           <li key={exercise.id}>
-            <ul>
+
+            <ul style={{ listStyleType: "none", marginBottom:'20px', display: 'flex',flexDirection: 'column',alignItems: 'center',textAlign: 'center',}}>
               <img
                 src={exercise.fields.gifUrl}
                 alt={exercise.fields.name}
-                style={{ width: "100px", height: "auto" }}
-              ></img>
+                style={{ width: "180px", height: "auto" }}
+              >
+              </img>
               <br />
-              Name : {exercise.fields.name}
-              <br />
-              Target : {exercise.fields.bodyPart}
+              <Typography variant="h7" sx={{color:'#4E387E',fontWeight:'bold', textTransform:"capitalize"}}> {exercise.fields.name}</Typography>
+             <br/>
+              <Typography variant="h7" sx={{color:'#4E387E',textTransform:"capitalize",textAlign:"center"}}>Target : {exercise.fields.bodyPart}</Typography>
+              
+              <br/>
+
               <Button
                 onClick={() => handleDeleteExercise(exercise.id)}
-                style={{ color: "red" }}
+                style={{
+                  margin: "5px",
+                  color: "red",
+                  background: "#d7d1de",
+                  fontSize: "14px",
+                  borderRadius: "20%",
+                  padding: "2px 50px",
+                  textTransform: "capitalize",
+                  textDecoration: "none", 
+                  fontWeight:'bold'
+                }}
+                // style={{ color: "red" , fontSize:'20px', fontWeight:'bold' ,marginLeft:'20px'}}
               >
-                X
+                REMOVE
               </Button>
+            
             </ul>
           </li>
         ))}

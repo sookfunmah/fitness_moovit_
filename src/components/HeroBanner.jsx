@@ -25,11 +25,14 @@ const HeroBanner = () => {
         Check out the most effective exercise
       </Typography>
 
-      <Button variant="contained" href="#exercises" color="error">
+      <Button variant="contained" href="#exercises" color="secondary">
         Explore Exercise
       </Button> <br/>
       <br />
-      <img src={HeroBannerImage} alt="banner" />
+       
+      <img src={HeroBannerImage} alt="banner" style={{width:'1400px',height:"900px"}}/>
+     
+      
     </Box>
   );
 };
