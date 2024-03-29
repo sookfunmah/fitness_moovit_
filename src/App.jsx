@@ -6,19 +6,22 @@ import "./App.css";
 import Home from "./pages/Home";
 import ExerciseDetail from "./pages/ExerciseDetail";
 import Navbar from "./components/Navbar";
-
+import Exercises from "./components/Exercises";
 import FavoriteExercises from "./components/FavoriteExercises";
 
 const App = () => (
   <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
     <Navbar />
-    <h>by Fun</h>
+    
     <Routes>
+     
       <Route path="/" element={<Home />} />
       <Route path="/exercise/:id" element={<ExerciseDetail />} />
-    
+      <Route path="/favlist" element={<FavoriteExercises/>} />
+     
     </Routes>
-    <FavoriteExercises />
+    
+    
   </Box>
 );
 

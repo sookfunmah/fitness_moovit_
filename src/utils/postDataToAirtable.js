@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const createRecordUrl = 'https://api.airtable.com/v0/appvao7Efftfzq9wm/favlist'
-const bearerToken = 'Bearer patDcFKAE6lSV2xY9.0138e6e7433458bb2de1e7c120b705cb40aef21b318f87d74bcec8dd11a45020'
+const bearerToken = process.env.REACT_APP_BEARER_TOKEN
 
 const postDataToAirtable = async (exerciseData) => {
   try {

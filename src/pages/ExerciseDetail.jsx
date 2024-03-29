@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react'
-import {useParams} from 'react-router-dom'
+import {useLocation, useParams} from 'react-router-dom'
 import{Box,Button} from '@mui/material'
 import axios from 'axios'
 import {exerciseOptions,fetchData, youtubeOptions} from '../utils/fetchData'
@@ -7,6 +7,8 @@ import Detail from '../components/Detail'
 import ExerciseVideos from '../components/ExerciseVideos'
 import postDataToAirtable from '../utils/postDataToAirtable'
 import Exercises from '../components/Exercises'
+import FavoriteExercises from '../components/FavoriteExercises'
+
 
 const AirtableUrl = 'https://api.airtable.com/v0/appvao7Efftfzq9wm/favlist'
 const bearerToken = process.env.REACT_APP_BEARER_TOKEN
@@ -57,7 +59,6 @@ const ExerciseDetail = () => {
      
       
     },[ExerciseDetail])
-
 
 
   //Function to handle adding to favorite list
@@ -111,7 +112,7 @@ const ExerciseDetail = () => {
   }
   }
    
-
+  const location = useLocation()
   return (
     <Box>
 
@@ -121,6 +122,7 @@ const ExerciseDetail = () => {
       <Detail exerciseDetail={exerciseDetail} />
 
       <ExerciseVideos exerciseVideos={exerciseVideos} name = {exerciseDetail.name}/>
+      {location.pathname ==='/favlist'&& <FavoriteExercises />}
       
     </Box>
   )

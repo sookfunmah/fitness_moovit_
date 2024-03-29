@@ -10,7 +10,6 @@ import axios from 'axios'
 const Home = () => {
   const[bodyPart,setBodyPart]= useState("all")
   const [exercises,setExercises] = useState([])
-
   
   return (
     <Box>
@@ -26,6 +25,12 @@ const Home = () => {
       bodyPart={bodyPart}
       
        />
+      
+      <FavoriteExercises />
+
+      
+
+      
     </Box>
   )
 }

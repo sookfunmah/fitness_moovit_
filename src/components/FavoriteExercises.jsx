@@ -50,7 +50,7 @@ const FavoriteExercises = () => {
   };
 
   return (
-    <Box>
+    <Box id="favoritelist">
       <Typography variant="h5">Favorite Exercises</Typography>
       <ul>
         {favoriteExercises.map((exercise) => (
