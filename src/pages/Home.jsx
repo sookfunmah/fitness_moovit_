@@ -4,7 +4,7 @@ import Exercises from '../components/Exercises'
 import HeroBanner from '../components/HeroBanner'
 import SearchExercises, { SearchExercise } from '../components/SearchExercises'
 import FavoriteExercises from '../components/FavoriteExercises.jsx'
-import axios from 'axios'
+
 
 
 const Home = () => {
