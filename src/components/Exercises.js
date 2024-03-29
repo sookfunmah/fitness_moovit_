@@ -4,7 +4,7 @@ import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 import ExerciseCard from "./ExerciseCard";
-import "../components/Component.css";
+// import "../components/Component.css";
 
 const Exercises = ({ exercises, setExercises, bodyPart}) => {
   console.log("Exercise: ", exercises);
